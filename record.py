@@ -12,6 +12,9 @@ def record_sound(filename, duration=1, fs=44100, play=False):
     sf.write(filename, data=data, samplerate=fs)
 
 
-for i in range(10):
-  prefix = 'down'
-  record_sound('{}_{}.wav'.format(prefix, i), 1)
+def record_data(prefix, n=25, duration=1):
+    for i in range(n):
+        print('{}_{}.wav'.format(prefix, i))
+        record_sound('{}_{}.wav'.format(prefix, i), duration=duration)
+        if i % 5 == 4:
+            input("Press Enter to continue...")
