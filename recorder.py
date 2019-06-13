@@ -11,7 +11,6 @@ import sounddevice as sd
 import soundfile as sf
 
 Threshold = 250
-
 SHORT_NORMALIZE = (1.0/32768.0)
 chunk = 1024
 FORMAT = pyaudio.paInt16
