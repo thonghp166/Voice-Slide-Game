@@ -13,6 +13,7 @@ class SlidePuzzle:
   won = False
   background = pygame.transform.scale(
       pygame.image.load('/home/zizoz/Documents/Xử lý tiếng nói/slide_voice/resources/back_ground.jpg'), (SCREEN_WIDTH, SCREEN_HEIGHT))
+  pics = []
   def __init__(self, gs, ts, ms):
     self.gs, self.ts, self.ms = gs, ts, ms
     self.tile_len = gs[0]*gs[1]-1
@@ -24,11 +25,14 @@ class SlidePuzzle:
 
     font = pygame.font.Font(None, 120)
 
+    for r, d, f in os.walk('/home/zizoz/Documents/Xử lý tiếng nói/slide_voice/resources/game_img'):
+      for file in f:
+        if '.jpg' in file:
+          self.pics.append(os.path.join(r, file))
+    # print(self.pics)
     #set game picture
     self.rect = pygame.Rect(0, 0, gs[0] * (ts + ms) + ms, gs[1] * (ts + ms) + ms)
-    # self.pic = pygame.transform.scale(
-    #     pygame.image.load(random.choice(os.listdir("/home/zizoz/Documents/Xử lý tiếng nói/slide_voice/resources/game_img"))), self.rect.size)
-    self.oripic = pygame.image.load("/home/zizoz/Documents/Xử lý tiếng nói/slide_voice/resources/game_img/3.jpg")
+    self.oripic = pygame.image.load(random.choice(self.pics))
     self.pic = pygame.transform.scale(self.oripic, self.rect.size)
     self.images = []
     for i in range(self.tile_len):

@@ -99,7 +99,10 @@ class Recorder:
     def predict(self, filename):
         results = [loaded_model[i].score(get_mfcc(filename)) for i in range(len(loaded_model))]
         print(results)
-        res = move[results.index(max(results))]
+        maxi = max(results)
+        if (maxi < -9000 and maxi > -12000):
+          res = move[results.index(maxi)]
+        else: res = 'No detected'
         print(res)
         return res
 
