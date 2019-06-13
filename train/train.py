@@ -5,8 +5,8 @@ import numpy as np
 import os
 import pickle
 
-paths = ['down','left','right','up']
-
+# paths = ['down','left','right','up']
+paths = ['left']
 files = []
 trained_files = []
 
